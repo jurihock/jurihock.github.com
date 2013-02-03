@@ -1,0 +1,86 @@
+@import url(http://fonts.googleapis.com/css?family=Inconsolata:400,700);
+
+@media screen
+{
+	div#container
+	{
+		width: 800px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+body
+{
+	font-family: 'Inconsolata', sans-serif;
+	font-size: 16px;
+	background: #FAFAFA;
+	color: black;
+	margin: 0;
+	padding: 0;
+}
+
+h1
+{
+	font-size: 64px;
+	font-weight: bold;
+	display: block;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+h1 span
+{
+	font-size: 32px;
+	display: block;
+	margin-bottom: -0.5em;
+	margin-left: 0.6em;
+}
+
+h1 a:link, h1 a:visited, h1 a:focus, h1 a:hover, h1 a:active
+{
+	color: black;
+	text-decoration: none;
+}
+
+h2
+{
+	font-weight: normal;
+	font-size: 18px;
+	text-transform: uppercase;
+	background: black;
+	color: white;
+	display: inline-block;
+	padding: 0.3em;
+	margin-top: 1em;
+	margin-bottom: 0em;
+}
+
+h2 a:link, h2 a:visited, h2 a:focus, h2 a:hover, h2 a:active
+{
+	color: white;
+	text-decoration: underline;
+}
+
+p
+{
+	margin-left: 2em;
+}
+
+p a:link, p a:visited, p a:focus, p a:hover, p a:active
+{
+	color: black;
+	text-decoration: underline;
+}
+
+ol li, ul li
+{
+	margin-left: -0.5em;
+}
+
+p#footer
+{
+	margin-left: 0em;
+	margin-top: 2em;
+	border-top: 1px solid black;
+}
