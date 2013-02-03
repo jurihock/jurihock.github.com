@@ -16,8 +16,19 @@ body
 	font-size: 16px;
 	background: #FAFAFA;
 	color: black;
-	margin: 0;
-	padding: 0;
+}
+
+code
+{
+	font-family: 'Inconsolata', monospace;
+	font-size: 16px;
+	color: #003300;
+}
+
+em
+{
+	font-style: normal;
+	color: #333333;
 }
 
 h1
@@ -59,10 +70,17 @@ h2
 h2 a:link, h2 a:visited, h2 a:focus, h2 a:hover, h2 a:active
 {
 	color: white;
-	text-decoration: underline;
+	text-decoration: none;
 }
 
-p
+h3
+{
+	font-weight: normal;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+p, ol, ul, h3
 {
 	margin-left: 2em;
 }
@@ -75,7 +93,12 @@ p a:link, p a:visited, p a:focus, p a:hover, p a:active
 
 ol li, ul li
 {
-	margin-left: -0.5em;
+	margin-left: -2.5em;
+}
+
+ol li p, ul li p
+{
+	margin-left: 0em;
 }
 
 p#footer
