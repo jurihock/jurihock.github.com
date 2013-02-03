@@ -1,0 +1,48 @@
+<html>
+<head>
+	{block:IndexPage}
+	<title>{Title}</title>
+	{/block:IndexPage}
+	{block:PermalinkPage}
+	{block:PostTitle}
+	<title>{PostTitle}</title>
+	{/block:PostTitle}
+	{/block:PermalinkPage}
+	{block:Description}
+	<meta name="description" content="{MetaDescription}" />
+	{/block:Description}
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+	<link rel="stylesheet" type="text/css" href="http://jurihock.de/stylesheet.css"/>
+</head>
+<body>
+<div id="container">
+
+	<h1><a href="http://blog.jurihock.de"><span>juri</span>hock</a></h1>
+
+	{block:Posts}
+
+		{block:Text}
+			{block:Title}
+			<h2><a href="{Permalink}">{Title}</a></h2>
+			{/block:Title}
+			{Body}
+		{/block:Text}
+
+	{/block:Posts}
+
+	{block:Pagination}
+	<p id="pager">
+		{block:PreviousPage}
+		<a href="{PreviousPage}">&#171; Previous</a>
+		{/block:PreviousPage}
+		{block:NextPage}
+		<a href="{NextPage}">Next &#187;</a>
+		{/block:NextPage}
+	</p>
+	{/block:Pagination}
+
+	<p id="footer">(c) 2011&mdash;2013 Juergen Hock</p>
+
+</div>
+</body>
+</html>
