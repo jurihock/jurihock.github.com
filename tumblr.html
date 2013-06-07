@@ -28,6 +28,16 @@
 			{Body}
 		{/block:Text}
 
+		<p id="meta">
+		{block:Date}
+			{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}
+		{/block:Date}
+		{block:HasTags}
+			| {block:Tags} <a href="{TagURL}">{Tag}</a> {/block:Tags}
+			<a href="/tags">...</a>
+		{/block:HasTags}
+		</p>
+
 	{/block:Posts}
 
 	{block:Pagination}
