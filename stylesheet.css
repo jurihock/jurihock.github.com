@@ -96,6 +96,12 @@ ol li p, ul li p
 	margin-left: 0em;
 }
 
+p#meta
+{
+	margin-left: 0em;
+	color: #5A5A5A;
+}
+
 p#pager
 {
 	font-weight: bold;
