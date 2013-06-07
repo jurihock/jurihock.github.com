@@ -110,7 +110,7 @@ p#meta a:link, p#meta a:visited, p#meta a:focus, p#meta a:hover, p#meta a:active
 p#pager
 {
 	font-weight: bold;
-	text-align: right;
+	text-align: center;
 }
 
 p#footer

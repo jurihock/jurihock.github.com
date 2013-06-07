@@ -42,12 +42,16 @@
 
 	{block:Pagination}
 	<p id="pager">
-		{block:PreviousPage}
-		<a href="{PreviousPage}">&#171; Previous</a>
-		{/block:PreviousPage}
-		{block:NextPage}
-		<a href="{NextPage}">Next &#187;</a>
-		{/block:NextPage}
+		[
+		{block:JumpPagination length="100"}
+			{block:CurrentPage}
+			<span>{PageNumber}</span>
+			{/block:CurrentPage}
+			{block:JumpPage}
+			<a href="{URL}">{PageNumber}</a>
+			{/block:JumpPage}
+		{/block:JumpPagination}
+		]
 	</p>
 	{/block:Pagination}
 
