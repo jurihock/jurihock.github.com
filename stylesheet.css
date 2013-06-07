@@ -98,8 +98,13 @@ ol li p, ul li p
 
 p#meta
 {
-	margin-left: 0em;
 	color: #5A5A5A;
+}
+
+p#meta a:link, p#meta a:visited, p#meta a:focus, p#meta a:hover, p#meta a:active
+{
+	color: #5A5A5A;
+	text-decoration: underline;
 }
 
 p#pager
