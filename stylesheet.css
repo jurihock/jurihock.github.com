@@ -109,6 +109,8 @@ p#meta a:link, p#meta a:visited, p#meta a:focus, p#meta a:hover, p#meta a:active
 
 p#pager
 {
+	margin-left: 0em;
+	margin-top: 2em;
 	font-weight: bold;
 	text-align: center;
 }
