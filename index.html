@@ -5,18 +5,18 @@
 
 	<style>
 
+		.clear
+		{
+			margin: 0;
+			padding: 0;
+		}
+
 		.center
 		{
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			height: 100%;
-		}
-
-		.clear
-		{
-			margin: 0;
-			padding: 0;
 		}
 
 		.black
@@ -39,8 +39,7 @@
 			font-size: xx-large;
 		}
 
-
-		.blink
+		#cursor
 		{
 			animation: blink 500ms linear infinite alternate;
 		}
@@ -65,38 +64,38 @@
 			return new Promise(resolve => setTimeout(resolve, ms));
 		}
 
-		function type(letter, ms)
+		function type(letter, ms = 100)
 		{
-			let element = document.getElementById('suffix');
+			let element = document.getElementById('slogan');
 
 			element.innerHTML += letter;
 
-			return sleep(ms + random(-10, +10));
+			return sleep(ms + random(-15, +15));
 		}
 
-		function erase(ms)
+		function revert(ms = 100)
 		{
-			let element = document.getElementById('suffix');
+			let element = document.getElementById('slogan');
 
 			element.innerHTML = element.innerHTML.slice(0, -1);
 
-			return sleep(ms + random(-10, +10));
+			return sleep(ms + random(-15, +15));
 		}
 
 		async function print(word)
 		{
 			let phrase = ' ' + word + (word != 'world' ? ' ' + 'world' : '');
 
-			for (var i = 0; i < phrase.length; i++)
+			for (let letter of phrase)
 			{
-				await type(phrase.charAt(i), 100)
+				await type(letter)
 			}
 
 			await sleep(random(1500, 5000));
 
-			for (var i = 0; i < phrase.length; i++)
+			for (let letter of phrase)
 			{
-				await erase(100);
+				await revert();
 			}
 
 			await sleep(random(500, 2500));
@@ -114,13 +113,21 @@
 			return words[random].word;
 		}
 
-		function loop(word)
+		async function loop(word)
 		{
 			print(word).then(vary).then(loop).catch(reset);
 		}
 
-		function reset()
+		async function reset()
 		{
+			if (!document.getElementById('slogan').innerHTML)
+			{
+				for (let letter of 'hello')
+				{
+					await type(letter);
+				}
+			}
+
 			loop('world');
 		}
 
@@ -130,12 +137,13 @@
 <body class="clear black white serif large">
 
 	<div class="center">
-		<div id="prefix">
-			hello<span id="suffix"></span><span class="blink">_</span>
-		</div>
+		<span id="slogan"></span>
+		<span id="cursor">_</span>
 	</div>
 
-	<script>setTimeout(reset, random(1000, 3000))</script>
+	<script>
+		sleep(random(3000, 5000)).then(reset)
+	</script>
 
 </body>
 </html>
