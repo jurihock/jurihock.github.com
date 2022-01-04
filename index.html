@@ -1,26 +1,141 @@
 <html>
 <head>
+
 	<title>jurihock.de</title>
-	<link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+
+	<style>
+
+		.center
+		{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+		}
+
+		.clear
+		{
+			margin: 0;
+			padding: 0;
+		}
+
+		.black
+		{
+			background-color: black;
+		}
+
+		.white
+		{
+			color: white;
+		}
+
+		.serif
+		{
+			font-family: serif;
+		}
+
+		.large
+		{
+			font-size: xx-large;
+		}
+
+
+		.blink
+		{
+			animation: blink 500ms linear infinite alternate;
+		}
+
+		@keyframes blink
+		{
+			50% { opacity: 0; }
+			100% { opacity: 1; }
+		}
+
+	</style>
+
+	<script>
+
+		function random(min, max)
+		{
+			return Math.random() * Math.abs(max - min) + Math.min(min, max);
+		}
+
+		function sleep(ms)
+		{
+			return new Promise(resolve => setTimeout(resolve, ms));
+		}
+
+		function type(letter, ms)
+		{
+			let element = document.getElementById('suffix');
+
+			element.innerHTML += letter;
+
+			return sleep(ms + random(-10, +10));
+		}
+
+		function erase(ms)
+		{
+			let element = document.getElementById('suffix');
+
+			element.innerHTML = element.innerHTML.slice(0, -1);
+
+			return sleep(ms + random(-10, +10));
+		}
+
+		async function print(word)
+		{
+			let phrase = ' ' + word + (word != 'world' ? ' ' + 'world' : '');
+
+			for (var i = 0; i < phrase.length; i++)
+			{
+				await type(phrase.charAt(i), 100)
+			}
+
+			await sleep(random(1500, 5000));
+
+			for (var i = 0; i < phrase.length; i++)
+			{
+				await erase(100);
+			}
+
+			await sleep(random(500, 2500));
+
+			return word;
+		}
+
+		async function vary(word)
+		{
+			let datamuse = 'https://api.datamuse.com/words?rel_jjb=';
+			let response = await fetch(datamuse + word);
+			let words = await response.json();
+			let random = Math.floor(Math.random() * words.length);
+
+			return words[random].word;
+		}
+
+		function loop(word)
+		{
+			print(word).then(vary).then(loop).catch(reset);
+		}
+
+		function reset()
+		{
+			loop('world');
+		}
+
+	</script>
+
 </head>
-<body>
-<div id="container">
+<body class="clear black white serif large">
 
-	<h1><a href="http://jurihock.de"><span>juri</span>hock</a></h1>
+	<div class="center">
+		<div id="prefix">
+			hello<span id="suffix"></span><span class="blink">_</span>
+		</div>
+	</div>
 
-	<h2>Blog</h2>
+	<script>setTimeout(reset, random(1000, 3000))</script>
 
-	<p>Just a personal blog.</p>
-	<p>&raquo; <a href="http://blog.jurihock.de">blog.jurihock.de</a></p>
-
-	<h2>Voicesmith</h2>
-
-	<p>Voicesmith project page.</p>
-	<p>&raquo; <a href="http://voicesmith.jurihock.de">voicesmith.jurihock.de</a></p>
-
-	<p id="footer">(c) 2011&mdash;2013 Juergen Hock
-		| <a href="http://jurihock.de/impressum.html">Impressum</a></p>
-
-</div>
 </body>
 </html>
